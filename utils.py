@@ -43,7 +43,6 @@ def extract_model_response(generation):
 def continue_chat(user_input, chat_history, model):
     chat_history.append({"role": "user", "text": user_input})
     prompt = convert_history_to_prompt(chat_history)
-    print(prompt)
     response = model(prompt, max_length=len(prompt) + 100, num_return_sequences=1)
     model_response = extract_model_response(response)
     chat_history.append({"role": "assistant", "text": model_response})
